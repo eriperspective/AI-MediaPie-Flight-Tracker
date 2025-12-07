@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Flight - Winter Homecoming</title>
+    <link rel="stylesheet" href="style-complete.css">
+    <link rel="stylesheet" href="modern-map.css">
+    <link rel="stylesheet" href="final-patches.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Leaflet for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- MediaPipe -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Winter Background - ENHANCED Beautiful Snowfall -->
+    <div class="winter-bg">
+        <!-- Large beautiful snowflakes -->
+        <div class="snowflake large">✻</div>
+        <div class="snowflake large">❅</div>
+        <div class="snowflake large">✼</div>
+        <!-- Medium beautiful snowflakes -->
+        <div class="snowflake medium">❄</div>
+        <div class="snowflake medium">✻</div>
+        <div class="snowflake medium">❅</div>
+        <div class="snowflake medium">✼</div>
+        <div class="snowflake medium">❆</div>
+        <div class="snowflake medium">✻</div>
+        <div class="snowflake medium">❄</div>
+        <!-- Small beautiful snowflakes -->
+        <div class="snowflake small">❅</div>
+        <div class="snowflake small">✼</div>
+        <div class="snowflake small">❆</div>
+        <div class="snowflake small">✻</div>
+        <div class="snowflake small">❄</div>
+        <div class="snowflake small">❅</div>
+        <div class="snowflake small">✼</div>
+        <div class="snowflake small">✻</div>
+        <div class="snowflake small">❆</div>
+        <div class="snowflake small">❄</div>
+        <!-- Extra tiny snowflakes -->
+        <div class="snowflake tiny">*</div>
+        <div class="snowflake tiny">·</div>
+        <div class="snowflake tiny">*</div>
+        <div class="snowflake tiny">·</div>
+        <div class="snowflake tiny">*</div>
+    </div>
+
+    <!-- Webcam Feed -->
+    <div class="video-container">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas"></canvas>
+        <div class="video-label">
+            <i data-lucide="hand" class="hand-icon-animated"></i>
+            <span>Gesture Control Active</span>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <i data-lucide="plane" class="header-icon plane-icon-animated"></i>
+                    <div>
+                        <h1>Book Your Flight</h1>
+                        <p class="subtitle">Winter Homecoming • Gesture Controlled</p>
+                    </div>
+                </div>
+                <div class="gesture-indicator">
+                    <i data-lucide="hand" class="hand-icon-animated"></i>
+                    <span id="currentGesture">Ready for gestures</span>
+                    <div class="status-dot"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Gesture Guide -->
+        <div class="gesture-bar glass-card">
+            <div class="gesture-item" data-gesture="peace">
+                <i data-lucide="arrow-down"></i>
+                <span>✌️ Peace = Scroll Down</span>
+            </div>
+            <div class="gesture-item" data-gesture="fist">
+                <i data-lucide="pause"></i>
+                <span>👊 Fist = Pause</span>
+            </div>
+            <div class="gesture-item" data-gesture="point">
+                <i data-lucide="arrow-up"></i>
+                <span>☝️ Point = Scroll Up</span>
+            </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="booking-section glass-card">
+            <!-- Trip Type Toggle -->
+            <div class="trip-type-toggle">
+                <button class="toggle-btn active" data-type="roundtrip">
+                    <i data-lucide="repeat"></i>
+                    Round Trip
+                </button>
+                <button class="toggle-btn" data-type="oneway">
+                    <i data-lucide="arrow-right"></i>
+                    One Way
+                </button>
+            </div>
+
+            <!-- Flight Selection Form -->
+            <div class="booking-form">
+                <!-- From and To -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>
+                            <i data-lucide="plane-takeoff"></i>
+                            From
+                        </label>
+                        <select id="fromCity" class="city-select">
+                            <option value="JFK">New York (JFK)</option>
+                            <option value="LAX">Los Angeles (LAX)</option>
+                            <option value="ORD">Chicago (ORD)</option>
+                            <option value="LHR">London (LHR)</option>
+                            <option value="CDG">Paris (CDG)</option>
+                            <option value="FCO">Rome (FCO)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="swap-btn" id="swapCities">
+                        <i data-lucide="arrow-left-right"></i>
+                    </button>
+
+                    <div class="form-field">
+                        <label>
+                            <i data-lucide="plane-landing"></i>
+                            To
+                        </label>
+                        <select id="toCity" class="city-select">
+                            <option value="LAX">Los Angeles (LAX)</option>
+                            <option value="JFK">New York (JFK)</option>
+                            <option value="ORD">Chicago (ORD)</option>
+                            <option value="LHR">London (LHR)</option>
+                            <option value="CDG">Paris (CDG)</option>
+                            <option value="FCO">Rome (FCO)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Dates -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>
+                            <i data-lucide="calendar"></i>
+                            Departure
+                        </label>
+                        <input type="date" id="departDate" class="date-input">
+                    </div>
+
+                    <div class="form-field" id="returnDateField">
+                        <label>
+                            <i data-lucide="calendar"></i>
+                            Return
+                        </label>
+                        <input type="date" id="returnDate" class="date-input">
+                    </div>
+                </div>
+
+                <!-- Passengers and Class -->
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>
+                            <i data-lucide="users"></i>
+                            Passengers
+                        </label>
+                        <select id="passengers" class="select-input">
+                            <option value="1">1 Passenger</option>
+                            <option value="2" selected>2 Passengers</option>
+                            <option value="3">3 Passengers</option>
+                            <option value="4">4 Passengers</option>
+                            <option value="5">5+ Passengers</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label>
+                            <i data-lucide="ticket"></i>
+                            Class
+                        </label>
+                        <select id="class" class="select-input">
+                            <option value="economy">Economy</option>
+                            <option value="business" selected>Business</option>
+                            <option value="first">First Class</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Search Button -->
+                <button class="search-btn" id="searchFlights">
+                    <i data-lucide="search"></i>
+                    Search Flights
+                </button>
+            </div>
+        </div>
+
+        <!-- Interactive Map -->
+        <div class="map-section glass-card">
+            <div class="map-header">
+                <i data-lucide="map"></i>
+                <h3>Flight Route</h3>
+            </div>
+            <div id="map"></div>
+        </div>
+
+        <!-- Flight Results -->
+        <div class="results-section">
+            <div class="results-header glass-card">
+                <div class="results-title">
+                    <i data-lucide="list"></i>
+                    <h3>Available Flights</h3>
+                </div>
+                <div class="results-info">
+                    <span id="resultsCount">10 Flights Available</span>
+                    <div class="sort-dropdown">
+                        <button class="sort-btn" id="sortBtn">
+                            <i data-lucide="arrow-up-down"></i>
+                            <span id="sortLabel">Sort by: Price</span>
+                        </button>
+                        <div class="sort-menu" id="sortMenu">
+                            <button class="sort-option active" data-sort="price">
+                                <i data-lucide="dollar-sign"></i>
+                                Price (Low to High)
+                            </button>
+                            <button class="sort-option" data-sort="duration">
+                                <i data-lucide="clock"></i>
+                                Duration (Shortest)
+                            </button>
+                            <button class="sort-option" data-sort="airline">
+                                <i data-lucide="plane"></i>
+                                Airline (A-Z)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flight Cards -->
+            <div class="flight-results" id="flightResults">
+                <!-- Flight cards will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="glass-footer">
+            <div class="footer-content">
+                <div>
+                    <i data-lucide="snowflake"></i>
+                    <span>Happy Holidays! Safe Travels This Winter Season and Blessings.</span>
+                </div>
+                <div>
+                    <i data-lucide="shield-check"></i>
+                    <span>Secure Booking • Best Price Guarantee<span class="by-eri"> by Eri Perspetive</span></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top-btn" title="Back to Top">
+        <i data-lucide="arrow-up" class="back-to-top-icon"></i>
+    </button>
+
+    <script src="app-final.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Back to Top Button Functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

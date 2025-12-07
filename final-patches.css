@@ -1,0 +1,494 @@
+/* ========================================
+   FINAL PATCHES - All Buttons Hover Green
+   ======================================== */
+
+/* ALL BUTTONS: Teal/Green hover (NO BLUE!) */
+.toggle-btn:hover,
+.swap-btn:hover,
+.city-select:hover,
+.date-input:hover,
+.select-input:hover,
+.gesture-item:hover,
+.sort-btn:hover {
+    background: linear-gradient(145deg, #10b981, #059669) !important;
+    color: #fff !important;
+}
+
+/* Toggle buttons active/pressed state - TEAL (NO BLUE!) */
+.toggle-btn:active,
+.toggle-btn.active {
+    background: linear-gradient(145deg, #14b8a6, #0d9488) !important;
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.4),
+        inset -5px -5px 10px rgba(20, 184, 166, 0.3),
+        0 0 50px rgba(20, 184, 166, 0.9) !important;
+}
+
+/* All buttons active/pressed - TEAL */
+.swap-btn:active,
+.city-select:active,
+.date-input:active,
+.select-input:active,
+.gesture-item:active,
+.sort-btn:active,
+.search-btn:active {
+    background: linear-gradient(145deg, #14b8a6, #0d9488) !important;
+    transform: translateY(0) !important;
+}
+
+/* Select Flight Button: Teal hover (NO BLUE!) */
+.select-flight-btn {
+    background: linear-gradient(145deg, #0d9488, #0f766e) !important;
+}
+
+.select-flight-btn:hover {
+    background: linear-gradient(145deg, #14b8a6, #0d9488) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.5),
+        -6px -6px 12px rgba(20, 184, 166, 0.3),
+        0 0 40px rgba(20, 184, 166, 0.8) !important;
+}
+
+.select-flight-btn:active {
+    background: linear-gradient(145deg, #0d9488, #0f766e) !important;
+    transform: translateY(0) !important;
+}
+
+/* Dropdown Options: TEAL hover (not royal blue) */
+.sort-option:hover {
+    background: rgba(20, 184, 166, 0.25) !important;
+}
+
+.sort-option.active {
+    background: rgba(20, 184, 166, 0.35) !important;
+}
+
+/* AGGRESSIVE OVERRIDE: All dropdown options TEAL (NO BLUE EVER!) */
+
+/* Base select styling with CUSTOM TEAL ARROW */
+select,
+.city-select,
+.select-input {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-color: inherit !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%235eead4' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 20px !important;
+    padding-right: 45px !important;
+    filter: drop-shadow(0 0 8px rgba(20, 184, 166, 0.5));
+    cursor: pointer !important;
+}
+
+/* Glowing arrow on hover */
+select:hover,
+.city-select:hover,
+.select-input:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2314b8a6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    filter: drop-shadow(0 0 12px rgba(20, 184, 166, 0.8)) 
+            drop-shadow(0 0 24px rgba(20, 184, 166, 0.5));
+}
+
+/* Ensure dropdown menu is visible when opened */
+select:focus,
+.city-select:focus,
+.select-input:focus {
+    outline: 2px solid #14b8a6 !important;
+    outline-offset: 2px !important;
+}
+
+/* All select options - VISIBLE with proper styling */
+select option,
+.city-select option,
+.select-input option {
+    background-color: #1e293b !important;
+    color: #f0fdfa !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+}
+
+/* Hover state - TEAL (browser-dependent) */
+select option:hover,
+.city-select option:hover,
+.select-input option:hover {
+    background-color: #14b8a6 !important;
+    color: #ffffff !important;
+}
+
+/* Checked/Selected state - TEAL */
+select option:checked,
+.city-select option:checked,
+.select-input option:checked {
+    background-color: #0d9488 !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
+
+/* Active state - TEAL */
+select option:active,
+.city-select option:active,
+.select-input option:active {
+    background-color: #14b8a6 !important;
+    color: #ffffff !important;
+}
+
+/* Focus state for select elements */
+select:focus,
+.city-select:focus,
+.select-input:focus {
+    border-color: #14b8a6 !important;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.3) !important;
+}
+
+/* Sort dropdown appears IN FRONT of flights */
+.sort-dropdown {
+    position: relative !important;
+    z-index: 10000 !important;
+}
+
+.sort-menu {
+    z-index: 10001 !important;
+    position: absolute !important;
+}
+
+.results-header {
+    position: relative !important;
+    z-index: 10000 !important;
+}
+
+/* Ensure flight cards stay below */
+.flight-card {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Dancing Cursive for "by Eri" */
+.by-eri {
+    font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-style: italic;
+    margin-left: 8px;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Header Icon Hover Effects - INTENSE TEAL GLOW + BOUNCE */
+.header-left:hover .plane-icon-animated {
+    animation: iconBounce 0.6s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 25px rgba(20, 184, 166, 1)) 
+            drop-shadow(0 0 50px rgba(20, 184, 166, 0.8))
+            drop-shadow(0 0 75px rgba(20, 184, 166, 0.5)) !important;
+    transition: all 0.3s ease;
+    transform: scale(1.15) !important;
+}
+
+.gesture-indicator:hover .hand-icon-animated {
+    animation: iconBounce 0.6s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 25px rgba(20, 184, 166, 1)) 
+            drop-shadow(0 0 50px rgba(20, 184, 166, 0.8))
+            drop-shadow(0 0 75px rgba(20, 184, 166, 0.5)) !important;
+    transition: all 0.3s ease;
+    transform: scale(1.15) !important;
+}
+
+/* Continuous bounce and STRONG TEAL GLOW on icons */
+.plane-icon-animated {
+    animation: iconBounce 2s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 15px rgba(20, 184, 166, 1)) 
+            drop-shadow(0 0 30px rgba(20, 184, 166, 0.8))
+            drop-shadow(0 0 45px rgba(20, 184, 166, 0.5)) !important;
+    transition: all 0.3s ease;
+    color: #5eead4 !important;
+}
+
+.hand-icon-animated {
+    animation: iconBounce 2s ease-in-out infinite !important;
+    filter: drop-shadow(0 0 15px rgba(20, 184, 166, 1)) 
+            drop-shadow(0 0 30px rgba(20, 184, 166, 0.8))
+            drop-shadow(0 0 45px rgba(20, 184, 166, 0.5)) !important;
+    transition: all 0.3s ease;
+    color: #5eead4 !important;
+}
+
+/* Enhanced glow on hover */
+.header-left:hover .plane-icon-animated,
+.gesture-indicator:hover .hand-icon-animated {
+    animation: iconBounce 0.5s ease-in-out infinite !important;
+}
+
+/* ========================================
+   BACK TO TOP BUTTON - Smaller & Repositioned
+   ======================================== */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, #14b8a6, #0d9488);
+    border: 2px solid rgba(20, 184, 166, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 8000;
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        -4px -4px 8px rgba(20, 184, 166, 0.2),
+        0 0 30px rgba(20, 184, 166, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+    background: linear-gradient(145deg, #5eead4, #14b8a6);
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 
+        10px 10px 20px rgba(0, 0, 0, 0.5),
+        -6px -6px 12px rgba(20, 184, 166, 0.3),
+        0 0 50px rgba(20, 184, 166, 1);
+    animation: iconBounce 0.6s ease-in-out infinite;
+}
+
+.back-to-top-btn:active {
+    transform: translateY(-4px) scale(1.05);
+}
+
+.back-to-top-icon {
+    width: 24px !important;
+    height: 24px !important;
+    color: #ffffff;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+    animation: arrowPulse 2s ease-in-out infinite;
+}
+
+.back-to-top-btn:hover .back-to-top-icon {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 1)) 
+            drop-shadow(0 0 30px rgba(20, 184, 166, 1));
+    animation: arrowPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% { 
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% { 
+        transform: translateY(-5px);
+        opacity: 0.8;
+    }
+}
+
+/* ========================================
+   VIDEO CONTAINER - Move to LEFT side + FORCE VISIBLE
+   ======================================== */
+.video-container {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    right: auto !important;
+    width: 260px !important;
+    height: 195px !important;
+    z-index: 1000 !important;
+    background: rgba(0, 0, 0, 0.8) !important; /* Dark bg so you can see the box */
+    overflow: hidden !important;
+    border: 2px solid #14b8a6 !important; /* Teal border so you know it's there */
+    border-radius: 16px !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Video element - FORCE VISIBLE camera feed with TEAL FILTER */
+.video-container video,
+#video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 260px !important;
+    height: 195px !important;
+    max-width: 260px !important;
+    max-height: 195px !important;
+    object-fit: cover !important;
+    transform: scaleX(-1) !important; /* Mirror the video */
+    z-index: 1 !important; /* Behind canvas */
+    background: transparent !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 0.6 !important; /* Reduce opacity */
+    /* Teal color filter to hide skin tones */
+    filter: 
+        sepia(100%) 
+        hue-rotate(140deg) 
+        saturate(200%) 
+        brightness(0.8) 
+        contrast(1.2) !important;
+}
+
+/* Canvas element - TRANSPARENT overlay for hand landmarks */
+.video-container canvas,
+#canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 260px !important;
+    height: 195px !important;
+    max-width: 260px !important;
+    max-height: 195px !important;
+    pointer-events: none !important;
+    transform: scaleX(-1) !important; /* Mirror to match video */
+    background: transparent !important;
+    z-index: 2 !important; /* Above video */
+}
+
+/* ========================================
+   FORM LABEL ICONS - Teal Glow Like Plane
+   ======================================== */
+
+/* All label icons get teal glow */
+.form-field label i,
+label i[data-lucide] {
+    filter: drop-shadow(0 0 8px rgba(20, 184, 166, 0.8)) 
+            drop-shadow(0 0 16px rgba(20, 184, 166, 0.5)) !important;
+    color: #5eead4 !important;
+    transition: all 0.3s ease;
+}
+
+/* Enhanced glow on hover */
+.form-field:hover label i,
+.form-field label:hover i {
+    filter: drop-shadow(0 0 12px rgba(20, 184, 166, 1)) 
+            drop-shadow(0 0 24px rgba(20, 184, 166, 0.7))
+            drop-shadow(0 0 36px rgba(20, 184, 166, 0.4)) !important;
+    transform: scale(1.1);
+}
+
+/* Swap button arrow icon */
+.swap-btn i {
+    filter: drop-shadow(0 0 10px rgba(20, 184, 166, 0.9)) 
+            drop-shadow(0 0 20px rgba(20, 184, 166, 0.6)) !important;
+    color: #5eead4 !important;
+}
+
+.swap-btn:hover i {
+    filter: drop-shadow(0 0 15px rgba(20, 184, 166, 1)) 
+            drop-shadow(0 0 30px rgba(20, 184, 166, 0.8)) !important;
+    animation: iconBounce 0.6s ease-in-out infinite;
+}
+
+/* WORKING Snowflake Animations - Visible & Beautiful */
+.snowflake {
+    position: absolute !important;
+    top: -10% !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                 0 0 20px rgba(255, 255, 255, 0.5) !important;
+    animation: snowFall linear infinite !important;
+    z-index: 1 !important;
+    pointer-events: none !important;
+}
+
+/* Simple falling animation that WORKS */
+@keyframes snowFall {
+    0% { 
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(110vh) translateX(30px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Size variations for depth */
+.snowflake.large {
+    font-size: 2.8em !important;
+    opacity: 0.9 !important;
+    animation-duration: 10s !important;
+}
+
+.snowflake.medium {
+    font-size: 2em !important;
+    opacity: 0.8 !important;
+    animation-duration: 13s !important;
+}
+
+.snowflake.small {
+    font-size: 1.5em !important;
+    opacity: 0.7 !important;
+    animation-duration: 16s !important;
+}
+
+.snowflake.tiny {
+    font-size: 1em !important;
+    opacity: 0.6 !important;
+    animation-duration: 19s !important;
+}
+
+/* Individual snowflake positions and delays */
+.snowflake:nth-child(1) { left: 5%; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 15%; animation-delay: 2s; }
+.snowflake:nth-child(3) { left: 25%; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 35%; animation-delay: 1s; }
+.snowflake:nth-child(5) { left: 45%; animation-delay: 3s; }
+.snowflake:nth-child(6) { left: 55%; animation-delay: 5s; }
+.snowflake:nth-child(7) { left: 65%; animation-delay: 2s; }
+.snowflake:nth-child(8) { left: 75%; animation-delay: 4s; }
+.snowflake:nth-child(9) { left: 85%; animation-delay: 1s; }
+.snowflake:nth-child(10) { left: 95%; animation-delay: 3s; }
+.snowflake:nth-child(11) { left: 10%; animation-delay: 6s; }
+.snowflake:nth-child(12) { left: 20%; animation-delay: 7s; }
+.snowflake:nth-child(13) { left: 30%; animation-delay: 8s; }
+.snowflake:nth-child(14) { left: 40%; animation-delay: 5s; }
+.snowflake:nth-child(15) { left: 50%; animation-delay: 9s; }
+.snowflake:nth-child(16) { left: 60%; animation-delay: 6s; }
+.snowflake:nth-child(17) { left: 70%; animation-delay: 7s; }
+.snowflake:nth-child(18) { left: 80%; animation-delay: 8s; }
+.snowflake:nth-child(19) { left: 90%; animation-delay: 9s; }
+.snowflake:nth-child(20) { left: 12%; animation-delay: 10s; }
+
+/* Icon Bounce Animation */
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.1); }
+}
+
+/* ========================================
+   GESTURE ACTIVE STATE - Visual Feedback
+   ======================================== */
+.gesture-item.gesture-active {
+    background: linear-gradient(145deg, #14b8a6, #0d9488) !important;
+    transform: scale(1.1) !important;
+    box-shadow: 
+        0 0 20px rgba(20, 184, 166, 0.8),
+        0 0 40px rgba(20, 184, 166, 0.5),
+        inset 0 0 20px rgba(94, 234, 212, 0.3) !important;
+    animation: gestureActivePulse 0.6s ease-in-out;
+}
+
+@keyframes gestureActivePulse {
+    0%, 100% { 
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(20, 184, 166, 0.8);
+    }
+    50% { 
+        transform: scale(1.15);
+        box-shadow: 0 0 30px rgba(20, 184, 166, 1);
+    }
+}

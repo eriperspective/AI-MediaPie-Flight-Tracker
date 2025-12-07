@@ -1,0 +1,159 @@
+/* Modern Minimalist Map Styling with TEAL Theme */
+
+/* Override default Leaflet map tiles */
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* Lightened transparent TEAL background */
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.15) 0%, rgba(20, 184, 166, 0.25) 100%) !important;
+    position: relative;
+}
+
+/* Hide attribution */
+.leaflet-control-attribution {
+    display: none !important;
+}
+
+/* Hide zoom controls for cleaner look */
+.leaflet-control-zoom {
+    opacity: 0.6;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.leaflet-control-zoom:hover {
+    opacity: 1;
+}
+
+/* Custom tile layer styling - make map grayscale/minimal with lighter appearance */
+.leaflet-tile-pane {
+    filter: grayscale(100%) brightness(0.5) contrast(1.1);
+    opacity: 0.4;
+}
+
+/* Modern Flight Path - LIGHT GLOWING Dashed Line */
+.leaflet-interactive {
+    stroke: #5eead4 !important;  /* Light teal */
+    stroke-width: 3 !important;
+    stroke-dasharray: 15, 10 !important;
+    stroke-linecap: round !important;
+    /* Bright glowing effect in light teal */
+    filter: drop-shadow(0 0 8px rgba(94, 234, 212, 1)) 
+            drop-shadow(0 0 16px rgba(94, 234, 212, 0.8)) 
+            drop-shadow(0 0 24px rgba(94, 234, 212, 0.6))
+            drop-shadow(0 0 32px rgba(20, 184, 166, 0.4));
+    animation: dashAnimation 30s linear infinite;
+}
+
+/* Add a glowing class for the flight path */
+.flight-path-glow {
+    stroke: #5eead4 !important;  /* Light teal */
+    filter: drop-shadow(0 0 8px rgba(94, 234, 212, 1)) 
+            drop-shadow(0 0 16px rgba(94, 234, 212, 0.8)) 
+            drop-shadow(0 0 24px rgba(94, 234, 212, 0.6))
+            drop-shadow(0 0 32px rgba(20, 184, 166, 0.4)) !important;
+}
+
+@keyframes dashAnimation {
+    to {
+        stroke-dashoffset: 1000;
+    }
+}
+
+/* Modern City Markers - With specific color glows */
+.custom-marker {
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
+    transition: all 0.3s ease;
+}
+
+/* Coral marker glow (LAX) */
+.custom-marker:has([style*="#FF7F50"]) {
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5))
+            drop-shadow(0 0 24px rgba(255, 127, 80, 0.7));
+}
+
+/* Dark teal marker glow (JFK, London) */
+.custom-marker:has([style*="#0d9488"]) {
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5))
+            drop-shadow(0 0 24px rgba(13, 148, 136, 0.7));
+}
+
+/* Popup styling with teal theme */
+.leaflet-popup-content-wrapper {
+    background: linear-gradient(145deg, rgba(13, 148, 136, 0.95), rgba(15, 118, 110, 0.95)) !important;
+    color: #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.6),
+        -4px -4px 8px rgba(20, 184, 166, 0.2),
+        0 0 30px rgba(13, 148, 136, 0.5) !important;
+    border: 1px solid rgba(20, 184, 166, 0.4) !important;
+    backdrop-filter: blur(10px);
+}
+
+.leaflet-popup-content {
+    margin: 12px 16px !important;
+    font-weight: 600 !important;
+    font-size: 0.9em !important;
+}
+
+.leaflet-popup-content b {
+    color: #5eead4 !important;
+    font-size: 1.1em !important;
+}
+
+.leaflet-popup-tip {
+    background: linear-gradient(145deg, rgba(13, 148, 136, 0.95), rgba(15, 118, 110, 0.95)) !important;
+    box-shadow: 0 0 10px rgba(13, 148, 136, 0.4) !important;
+}
+
+/* Pulsing animation for markers */
+@keyframes markerPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.custom-marker:hover {
+    animation: markerPulse 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+/* Map container glow effect */
+.map-section:hover #map {
+    box-shadow: 
+        0 0 30px rgba(13, 148, 136, 0.3),
+        0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Animated plane icon on path */
+@keyframes planeMove {
+    0% {
+        offset-distance: 0%;
+    }
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+@keyframes planePulse {
+    0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px rgba(13, 148, 136, 0.8));
+    }
+    50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 30px rgba(13, 148, 136, 1));
+    }
+}
+
+.animated-plane {
+    animation: planePulse 2s ease-in-out infinite !important;
+}

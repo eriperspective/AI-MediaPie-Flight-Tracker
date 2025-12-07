@@ -1,0 +1,914 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 25%, #14b8a6 50%, #10b981 75%, #22c55e 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
+    color: #fff;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Winter Background */
+.winter-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5em;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.snowflake:nth-child(1) { left: 10%; animation-duration: 14s; }
+.snowflake:nth-child(2) { left: 30%; animation-duration: 16s; animation-delay: 2s; }
+.snowflake:nth-child(3) { left: 50%; animation-duration: 12s; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 70%; animation-duration: 15s; animation-delay: 1s; }
+.snowflake:nth-child(5) { left: 85%; animation-duration: 13s; animation-delay: 3s; }
+.snowflake:nth-child(6) { left: 95%; animation-duration: 17s; animation-delay: 5s; }
+
+/* Video Container */
+.video-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 260px;
+    height: 195px;
+    border-radius: 16px;
+    overflow: hidden;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+}
+
+.video-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.video-label i {
+    width: 14px;
+    height: 14px;
+}
+
+/* Main Container */
+.container {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Glass Card Base */
+.glass-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.glass-header {
+    padding: 24px 32px;
+    margin-bottom: 20px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-icon {
+    width: 48px;
+    height: 48px;
+}
+
+.header-left h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+.gesture-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 0.9em;
+}
+
+.gesture-indicator i {
+    width: 20px;
+    height: 20px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Gesture Bar - NEUMORPHIC DARK SLATE BLUE */
+.gesture-bar {
+    display: flex;
+    gap: 14px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+}
+
+.gesture-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: 700;
+    font-size: 0.95em;
+    color: #e2e8f0;
+    cursor: pointer;
+    box-shadow: 
+        7px 7px 14px rgba(0, 0, 0, 0.5),
+        -7px -7px 14px rgba(71, 85, 105, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.gesture-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(96, 165, 250, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gesture-item i {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.gesture-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        10px 10px 20px rgba(0, 0, 0, 0.6),
+        -7px -7px 14px rgba(71, 85, 105, 0.2),
+        0 0 40px rgba(96, 165, 250, 0.5);
+}
+
+.gesture-item:hover::before {
+    opacity: 1;
+}
+
+.gesture-active {
+    background: linear-gradient(145deg, #3b82f6, #2563eb) !important;
+    box-shadow: 
+        inset 4px 4px 8px rgba(0, 0, 0, 0.5),
+        inset -4px -4px 8px rgba(96, 165, 250, 0.3),
+        0 0 50px rgba(59, 130, 246, 0.8) !important;
+    transform: scale(1.02) !important;
+    color: #fff !important;
+}
+
+.gesture-active::before {
+    opacity: 0.6 !important;
+}
+
+/* Booking Section */
+.booking-section {
+    padding: 32px;
+    margin-bottom: 20px;
+}
+
+/* Trip Type Toggle - NEUMORPHIC DARK SLATE BLUE */
+.trip-type-toggle {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.toggle-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 28px;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: none;
+    border-radius: 18px;
+    color: #e2e8f0;
+    font-size: 1.05em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        9px 9px 18px rgba(0, 0, 0, 0.5),
+        -9px -9px 18px rgba(71, 85, 105, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.toggle-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(96, 165, 250, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-btn i {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.toggle-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        12px 12px 24px rgba(0, 0, 0, 0.6),
+        -9px -9px 18px rgba(71, 85, 105, 0.2),
+        0 0 50px rgba(96, 165, 250, 0.5);
+}
+
+.toggle-btn:hover::before {
+    opacity: 1;
+}
+
+.toggle-btn.active {
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+        inset -5px -5px 10px rgba(96, 165, 250, 0.3),
+        0 0 40px rgba(59, 130, 246, 0.7);
+    color: #fff;
+}
+
+.toggle-btn.active::before {
+    opacity: 0.5;
+}
+
+.toggle-btn.active:hover {
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+        inset -5px -5px 10px rgba(96, 165, 250, 0.3),
+        0 0 60px rgba(59, 130, 246, 0.9);
+}
+
+/* Booking Form */
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.form-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-field label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.form-field label i {
+    width: 18px;
+    height: 18px;
+}
+
+.city-select,
+.date-input,
+.select-input {
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.city-select:hover,
+.date-input:hover,
+.select-input:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+.city-select:focus,
+.date-input:focus,
+.select-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+}
+
+.city-select option,
+.select-input option {
+    background: #0891b2;
+    color: #fff;
+}
+
+.swap-btn {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: none;
+    border-radius: 14px;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.5),
+        -6px -6px 12px rgba(71, 85, 105, 0.15);
+}
+
+.swap-btn:hover {
+    transform: rotate(180deg) translateY(-2px);
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.6),
+        -6px -6px 12px rgba(71, 85, 105, 0.2),
+        0 0 30px rgba(96, 165, 250, 0.5);
+}
+
+.swap-btn i {
+    width: 24px;
+    height: 24px;
+}
+
+/* Search Button - NEUMORPHIC DARK SLATE BLUE */
+.search-btn {
+    padding: 20px 36px;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: none;
+    border-radius: 18px;
+    color: #e2e8f0;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 
+        10px 10px 20px rgba(0, 0, 0, 0.6),
+        -10px -10px 20px rgba(71, 85, 105, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.search-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(16, 185, 129, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-btn i {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    z-index: 1;
+}
+
+.search-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        14px 14px 28px rgba(0, 0, 0, 0.7),
+        -10px -10px 20px rgba(71, 85, 105, 0.2),
+        0 0 60px rgba(16, 185, 129, 0.6);
+    background: linear-gradient(145deg, #10b981, #059669);
+    color: #fff;
+}
+
+.search-btn:hover::before {
+    opacity: 1;
+}
+
+.search-btn:active {
+    transform: translateY(-2px);
+    box-shadow: 
+        inset 6px 6px 12px rgba(0, 0, 0, 0.5),
+        inset -6px -6px 12px rgba(16, 185, 129, 0.3),
+        0 0 40px rgba(16, 185, 129, 0.8);
+}
+
+/* Map Section */
+.map-section {
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.map-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.map-header i {
+    width: 24px;
+    height: 24px;
+}
+
+.map-header h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Results Section */
+.results-section {
+    margin-bottom: 20px;
+}
+
+.results-header {
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.results-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.results-title i {
+    width: 24px;
+    height: 24px;
+}
+
+.results-title h3 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.results-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.results-info span {
+    font-size: 0.95em;
+    opacity: 0.9;
+}
+
+.sort-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: none;
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.4),
+        -5px -5px 10px rgba(71, 85, 105, 0.1);
+}
+
+.sort-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        7px 7px 14px rgba(0, 0, 0, 0.5),
+        -5px -5px 10px rgba(71, 85, 105, 0.15),
+        0 0 25px rgba(96, 165, 250, 0.4);
+}
+
+.sort-btn i {
+    width: 16px;
+    height: 16px;
+}
+
+/* Flight Results */
+.flight-results {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 800px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.flight-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+.flight-results::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.flight-results::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+/* Flight Card */
+.flight-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(16px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.flight-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(34, 197, 94, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(34, 197, 94, 0.3);
+}
+
+.flight-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.airline-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95em;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.airline-name i {
+    width: 20px;
+    height: 20px;
+}
+
+.flight-date {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.flight-route {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.route-point {
+    text-align: center;
+}
+
+.airport-code {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.airport-time {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.airport-name {
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+.route-middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+}
+
+.flight-duration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+.flight-duration i {
+    width: 16px;
+    height: 16px;
+}
+
+.route-line {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.route-plane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.route-plane i {
+    width: 16px;
+    height: 16px;
+    color: #0891b2;
+}
+
+.flight-stops {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+.flight-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.flight-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-label {
+    font-size: 0.85em;
+    opacity: 0.8;
+    margin-bottom: 4px;
+}
+
+.price-amount {
+    font-size: 2em;
+    font-weight: 700;
+    color: #22c55e;
+    text-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+}
+
+.price-per {
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+/* Select Flight Button - NEUMORPHIC */
+.select-flight-btn {
+    padding: 14px 30px;
+    background: linear-gradient(145deg, #334155, #1e293b);
+    border: none;
+    border-radius: 14px;
+    color: #e2e8f0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 
+        6px 6px 12px rgba(0, 0, 0, 0.5),
+        -6px -6px 12px rgba(71, 85, 105, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.select-flight-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(34, 197, 94, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.select-flight-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        8px 8px 16px rgba(0, 0, 0, 0.6),
+        -6px -6px 12px rgba(71, 85, 105, 0.2),
+        0 0 40px rgba(34, 197, 94, 0.5);
+    background: linear-gradient(145deg, #22c55e, #16a34a);
+    color: #fff;
+}
+
+.select-flight-btn:hover::before {
+    opacity: 1;
+}
+
+/* Footer */
+.glass-footer {
+    padding: 24px 32px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.footer-content div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+.footer-content i {
+    width: 18px;
+    height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .swap-btn {
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .header-left h1 {
+        font-size: 2em;
+    }
+    
+    .gesture-bar {
+        flex-direction: column;
+    }
+    
+    .trip-type-toggle {
+        flex-direction: column;
+    }
+    
+    .results-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .video-container {
+        width: 200px;
+        height: 150px;
+    }
+}
