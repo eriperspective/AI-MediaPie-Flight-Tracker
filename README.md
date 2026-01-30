@@ -1,6 +1,6 @@
 # Flight Tracker with AI-Powered Gesture Control
 
-A touchless flight booking interface powered by Google's MediaPipe hand tracking model. This web application demonstrates real-time computer vision AI running at 30-60 FPS in the browser, enabling users to navigate and interact with live flight data using only hand gestures.
+Real-time touchless flight booking interface using Google MediaPipe hand tracking. Browser-based computer vision AI running at 30-60 FPS enables gesture-controlled navigation of live flight data. Demonstrates spatial intelligence with hands-free accessibility for inclusive interaction design.
 
 ## Features
 
@@ -102,10 +102,6 @@ This project demonstrates practical AI engineering by:
 - Mobile app version
 - AR elements overlay
 
-## License
-
-MIT License - Feel free to use and modify for your projects
-
 ## Acknowledgments
 
 - Google MediaPipe team for the hand tracking model
@@ -116,7 +112,11 @@ MIT License - Feel free to use and modify for your projects
 
 Built by Eri Perspective
 
-Powered by Goose by Block and Claude Sonnet 4.5 by Anthropic
+Powered by goose by Block and Claude Sonnet 4.5 by Anthropic
 
 
 **Experience the magic of AI-powered gesture control in your browser!**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
